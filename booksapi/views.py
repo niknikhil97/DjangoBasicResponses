@@ -42,7 +42,7 @@ class BookDetailView(APIView):
 
     def patch(self,request,id):
         a=Book.objects.get(pk=id)
-        serializer=BookSerializer(instance=a,data=request.data)
+        serializer=BookSerializer(instance=a,data=request.data,partial=True)
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)
